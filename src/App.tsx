@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import "./App.css";
 import { Quizzer } from "./quizzer/Quizzer";
 import { Button } from "react-bootstrap";
+import { QuizQuestion } from "./quizzer/QuizQuestion";
+import { Question, QuestionType } from "./interfaces/question";
+import { QuestionEdit } from "./quizzer/QuestionEdit";
+import { QuizEdit } from "./quizzer/QuizEdit";
+import { QuizExpanded } from "./quizzer/QuizExpanded";
+import { QuizView } from "./quizzer/QuizView";
+import { QuizList } from "./quizzer/QuizList";
+import { AddQuizModal } from "./quizzer/AddQuizModal";
 //import { ShowHideTasks } from "./tasks/ShowHideTasks";
 
 function App(): JSX.Element {

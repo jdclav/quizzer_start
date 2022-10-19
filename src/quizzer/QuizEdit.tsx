@@ -12,13 +12,21 @@ export const QuizEdit = ({
     deleteQuiz,
     switchEdit,
     resetView
-}: {) => {
+}: {
+    quiz: Quiz;
+    editQuiz: (qId: number, newQuiz: Quiz) => void;
+    deleteQuiz: (qId: number) => void;
+    switchEdit: () => void;
+    resetView: () => void;
+}) => {
     const [newQuiz, setNewQuiz] = useState<Quiz>({ ...quiz });
 
     const editQuestion = (questionId: number, newQuestion: Question) => {
         setNewQuiz({
             ...newQuiz,
             questionList: newQuiz.questionList.map(
+                (quest: Question): Question =>
+                    quest.id === questionId ? newQuestion : quest
             )
         });
     };
@@ -27,6 +35,7 @@ export const QuizEdit = ({
         setNewQuiz({
             ...newQuiz,
             questionList: newQuiz.questionList.filter(
+                (quest: Question): boolean => quest.id === questionId
             )
         });
     };
@@ -42,7 +51,7 @@ export const QuizEdit = ({
                 (q: Question, idx: number): Question => {
                     if (idx === idx1) return newQuiz.questionList[idx2];
                     if (idx === idx2) return newQuiz.questionList[idx1];
-                    return;
+                    return q;
                 }
             )
         });
@@ -79,7 +88,7 @@ export const QuizEdit = ({
                             ) => {
                                 setNewQuiz({
                                     ...newQuiz,
-                                    published: 
+                                    published: e.target.checked
                                 });
                             }}
                         ></Form.Check>
@@ -146,7 +155,7 @@ export const QuizEdit = ({
                         >
                             Save
                         </Button>
-                        <Button variant="warning" onClick={switchEdit}>
+                        <Button variant="warning" /* onClick={switchEdit} */>
                             Cancel
                         </Button>
                     </div>
