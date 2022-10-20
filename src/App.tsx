@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { Quizzer } from "./quizzer/Quizzer";
 import { Button } from "react-bootstrap";
-//Justin Clavette Fixes
+
 function App(): JSX.Element {
     const [quizzer, setQuizzer] = useState<boolean>(true);
 
