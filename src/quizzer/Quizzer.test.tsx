@@ -170,6 +170,16 @@ describe("Quizzer Tests", () => {
     });
 
     test("Users can delete an existing quiz question", () => {
+        const text = screen.getByText("Simple_Questions");
+        text.click();
+
+        const editButton = screen.getByText("Edit");
+        editButton.click();
+
+        const deleteButton = screen.getAllByText("Delete")[0];
+        deleteButton.click();
+
+        expect(screen.queryByText("What is 2+2?")).not.toBeInTheDocument();
     });
 
     test("Users can add a new quiz question", () => {
@@ -199,6 +209,23 @@ describe("Quizzer Tests", () => {
     });
 
     test("Users can edit the questions and fields of a quiz", () => {
+        const text = screen.getByText("Simple_Questions");
+        text.click();
+
+        const editButton = screen.getByText("Edit");
+        editButton.click();
+
+        const editQuestion = screen.getAllByTestId("edit_question_title")[0];
+        userEvent.type(editQuestion, "testing");
+
+        const editQuiz = screen.getAllByTestId("quiz_title")[0];
+        userEvent.type(editQuiz, "test title");
+
+        const save = screen.getByText("Save");
+        save.click();
+
+        expect(screen.getByText(/test title/i)).toBeInTheDocument();
+        expect(screen.getByText(/testing/i)).toBeInTheDocument();
     });
 
     test("Users can reorder quiz questions", () => {

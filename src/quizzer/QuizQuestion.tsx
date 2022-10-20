@@ -45,7 +45,6 @@ export const QuizQuestion = ({
                         {question.points} pt{question.points !== 1 ? "s" : ""}
                     </h4>
                 </div>
-                f
                 <div className="answer_box">
                     {question.type === "short_answer_question" && (
                         <Form.Group controlId="formShortAnswerBox">

@@ -66,6 +66,7 @@ export const QuizEdit = ({
                             <Form.Label>Title: </Form.Label>
                             <Form.Control
                                 value={newQuiz.title}
+                                data-testid="quiz_title"
                                 onChange={(
                                     e: React.ChangeEvent<HTMLInputElement>
                                 ) =>
@@ -155,7 +156,7 @@ export const QuizEdit = ({
                         >
                             Save
                         </Button>
-                        <Button variant="warning" /* onClick={switchEdit} */>
+                        <Button variant="warning" onClick={switchEdit}>
                             Cancel
                         </Button>
                     </div>
